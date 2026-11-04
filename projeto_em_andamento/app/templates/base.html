@@ -1,0 +1,26 @@
+<header>
+<div>
+<a href="/">Início</a>
+<a href="{{ url_for('login') }}">Login</a>
+<a id="menu-cadastrar" href="{{ url_for('cadastrar') }}">Cadastro de Usuário</a>
+<a id="menu-listar" href="{{ url_for('listar') }}">Listar Usuários</a>
+</div>
+</header>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/
+4.7.0/css/font-awesome.min.css">
+
+{% with messages = get_flashed_messages(with_categories=True) %}
+{% if messages %}
+    {% for category, message in messages %}
+    {% if category == 'error' %}
+        <i class="fa fa-exclamation-triangle"></i> {{ message }}
+
+    {% elif category == 'success' %}
+
+        <i class="fa fa-check"></i> {{ message }}
+    {% else %}
+        <i class="fa fa-info-circle"></i> {{ message }}
+    {% endif %}
+    {% endfor %}
+{% endif %}
+{% endwith %}
